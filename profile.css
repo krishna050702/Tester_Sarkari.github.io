@@ -1,0 +1,128 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .body {
+    width: 100vw;
+    height: 100vh;
+    background: #698dcf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .profile-card {
+    background: #333e4a;
+    height: 400px;
+    width: 250px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: absolute;
+    left: 45%;
+    top: 15%;
+  }
+  
+  .infos {
+    height: 70%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .img-border {
+    background: linear-gradient(to bottom right, #698dcf, #ed8ae5);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+  
+  .img-border img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  
+  .name {
+    font-size: 1.4rem;
+    color: #fff;
+  }
+  
+  .specialty {
+    font-size: 0.8rem;
+    color: #e07272;
+    font-weight: 400;
+  }
+  
+  .social-media {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .social-media a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 8px;
+    transition: all 0.4s ease;
+  }
+  
+  .social-media a:hover {
+    color: #e07272;
+  }
+  
+  .contact-me-btn {
+    background: transparent;
+    border: 1px solid #e07272;
+    border-radius: 3px;
+    outline: none;
+    width: 130px;
+    height: 35px;
+    cursor: pointer;
+    color: #e07272;
+    margin-top: 20px;
+    transition: all 0.4s ease;
+  }
+  
+  .contact-me-btn:hover {
+    color: #fff;
+    background: #e07272;
+  }
+  
+  .stats {
+    height: 30%;
+    background: #fff;
+    display: flex;
+  /*   justify-content: center; */
+    align-items: center;
+  }
+  
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 32%;
+  /*   background: red; */
+  }
+  
+  .stat:nth-child(2) {
+    border: 1px solid #adadad;
+    border-top: 0;
+    border-bottom: 0;
+  /*   background: blue; */
+  }
+  
+  .stat-num {
+    font-size: 1.3rem;
+  }
+  
+  .stat-name {
+    font-size: 0.7em;
+    color: #e07272;
+  }

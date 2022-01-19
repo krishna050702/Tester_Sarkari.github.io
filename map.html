@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Demo: Route avoidance with the Directions API and Turf.js</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="style.css" rel="stylesheet">
+<!-- Mapbox GL JS -->
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+<link
+href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css"
+rel="stylesheet"
+/>
+ 
+<!-- Mapbox GL Directions -->
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
+<link
+rel="stylesheet"
+href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css"
+type="text/css"
+/>
+ 
+<!-- Turf & Polyline -->
+<script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-polyline/1.1.1/polyline.js"></script>
+
+</head>
+ 
+<body>
+<div class="white" >
+    <h4>SARKARI</h4>
+    <span class="iconify" data-icon="flat-color-icons:settings" style="color: #4ecb71;"></span>
+    <div id="map"></div>
+    <h3>Route Detail</h3>
+    <div class="card" id="Cr">
+        <span class="iconify" id = "icon1" data-icon="ci:dot-03-m" style="color: #0b8358;"></span>
+        <span class="iconify" id = "icon2" data-icon="ci:line-xl" style="color: #0b8358;"></span>
+        <span class="iconify" id = "icon3" data-icon="ci:dot-03-m" style="color: #0b8358;"></span>
+        <form>
+        <input type="text" id="Latitude" name="Place" placeholder="Location">
+        <input type="text" id="Destination" name="Place" placeholder="Destination">
+        </form>
+        <button onclick="myFunction()">Find</button>
+    </div>
+</div>
+
+ 
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoibG9rZXNoLW1hbHZpeWEiLCJhIjoiY2t5ZzJhOXNhMW80bTJwbzh4aWZ5MWdzMSJ9.PglR7dfI3wqJnSG8Jy9D0w';
+ 
+const map = new mapboxgl.Map({
+container: 'map', // container id
+style: 'mapbox://styles/mapbox/navigation-night-v1',
+center: [79.1437,21.1955], // starting position
+zoom: 11 // starting zoom
+});
+ 
+const directions = new MapboxDirections({
+accessToken: mapboxgl.accessToken,
+unit: 'metric',
+profile: 'mapbox/driving',
+alternatives: 'false',
+geometries: 'geojson'
+});
+ 
+map.scrollZoom.enable();
+map.addControl(directions, 'bottom-left');
+function myFunction()
+{   let text1 = "MH 12 SA ";
+    var Loc = document.getElementById("Latitude").value;
+    var Det = document.getElementById("Destination").value;
+    const bus = [];
+    console.log(Loc);
+    var result = Loc.toLowerCase();
+    var dest = Det.toLowerCase();
+    var mydata = {
+        "MH 12 SA 4623":{
+            Route:["kamptee","asha hospital","orange city","delhi public school","Khari","naglok","bhilgaon","naka no 2","uppalwadi","pili nadi","automotive","teka naka","indora","kadbi chowk","gurudwara","gaddi godam","lic","reserve bank","burdi"]
+        },
+        "MH 40 DM 9968":{
+            Route:["kamptee","asha hospital","orange city","delhi public school","Khari","naglok","bhilgaon","naka no 2","uppalwadi","pili nadi","automotive","teka naka","indora","kadbi chowk","gurudwara","gaddi godam","lic","reserve bank","burdi"]
+        },
+        "MH 12 SA 6668":{
+            Route:["kamptee","asha hospital","orange city","delhi public school","Khari","naglok","bhilgaon","naka no 2","uppalwadi","pili nadi","automotive","teka naka","indora","kadbi chowk","gurudwara","gaddi godam","lic","reserve bank","burdi"]
+        }
+    }
+    var ans = 0;
+    for(var key in mydata){
+            /*console.log(key);
+            console.log(mydata[key].Route);*/
+            for(var i in mydata[key].Route){
+                if(mydata[key].Route[i] == result){
+                    ans = 1;
+                    
+                }
+                if(mydata[key].Route[i] == dest){
+                    ans = 2;
+                   
+                }
+            }
+            if(ans == 2){
+                
+                bus.push(key)
+                console.log(bus);
+            }
+            else{
+                console.log("No bus");
+            }
+            
+          }
+          document.getElementById("Cr").innerHTML = "<div style=\"background-color: #fff; border: 2px solid #090808; position:absolute; top: 15%;left: 3%; width : 98%; height : 15%; border-radius: 4px;  \"></div>"+"<span class=\"iconify\" data-icon=\"emojione:oncoming-bus\" style=\"font-size: 45px; color: #4ecb7; position:absolute;top: 18%;left: 5%;\"></span>"+"<h4 style=\"color: #000000; position:absolute;top: 17%;left: 26%;\">"+bus[0]+"<br/>"+"<span style=\"font-size: 15px;\">"+Loc+"-"+Det+"</span></h4>"+"<div style=\"background-color: #fff; border: 2px solid #090808; position:absolute; top: 31%;left: 3%; width : 98%; height : 15%; border-radius: 4px;  \"></div>"+"<span class=\"iconify\" data-icon=\"emojione:oncoming-bus\" style=\"font-size: 45px; color: #4ecb7; position:absolute;top: 33%;left: 5%;\"></span>"+"<h4 style=\"color: #000000; position:absolute;top: 32%;left: 26%;\">"+bus[1]+"<br/>"+"<span style=\"font-size: 15px;\">"+Loc+"-"+Det+"</span></h4>"+"<div style=\"background-color: #fff; border: 2px solid #090808; position:absolute; top: 47%;left: 3%; width : 98%; height : 15%; border-radius: 4px;  \"></div>"+"<span class=\"iconify\" data-icon=\"emojione:oncoming-bus\" style=\"font-size: 45px; color: #4ecb7; position:absolute;top: 49%;left: 5%;\"></span>"+"<h4 style=\"color: #000000; position:absolute;top: 48%;left: 26%;\">"+bus[2]+"<br/>"+"<span style=\"font-size: 15px;\">"+Loc+"-"+Det+"</span></h4>"+"<div style=\"background-color: #fff; border: 2px solid #090808; position:absolute; top: 64%;left: 3%; width : 98%; height : 15%; border-radius: 4px;  \"></div>"+"<span class=\"iconify\" data-icon=\"emojione:oncoming-bus\" style=\"font-size: 45px; color: #4ecb7; position:absolute;top: 66%;left: 5%;\"></span>"+"<h4 style=\"color: #000000; position:absolute;top: 65%;left: 26%;\">"+bus[2]+"<br/>"+"<span style=\"font-size: 15px;\">"+Loc+"-"+Det+"</span></h4>";
+                
+}
+
+</script>
+<script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+</body>
+</html>

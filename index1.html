@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <link href="Bus_style.css" rel="stylesheet">
+    <title>Sarkari</title>
+</head>
+<body>
+    <div class="white">
+        <img src="busses.webp">
+        <h1>SARKARI</h1>
+        <p>Do not follow where the path<br>may lead.Go instead where there is no path and <br>leave a trail” <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Ralph Waldo Emerson</p>
+        <button type="button" id="login"><span class="iconify" data-icon="flat-color-icons:google"></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sign in with Google</button>
+    </div>
+     <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
+      import { getAuth ,GoogleAuthProvider, signInWithPopup, getRedirectResult } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-auth.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDScj7H87P1P_PwEipmEzuZBY7zBRcrX48",
+        authDomain: "sarkari-a394d.firebaseapp.com",
+        projectId: "sarkari-a394d",
+        storageBucket: "sarkari-a394d.appspot.com",
+        messagingSenderId: "268016800185",
+        appId: "1:268016800185:web:c521ef38d5d4a7a12e2668",
+        measurementId: "G-69N60M7V86"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const provider = new GoogleAuthProvider(app);
+
+      login.addEventListener('click',(e) => {
+      
+          /*signInWithRedirect(auth, provider);
+          getRedirectResult(auth)
+          .then((result) => {
+              // This gives you a Google Access Token. You can use it to access Google APIs.
+              const credential = GoogleAuthProvider.credentialFromResult(result);
+              const token = credential.accessToken;
+              // The signed-in user info.
+              const user = result.user;
+          }).catch((error) => {
+              // Handle Errors here.
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              // The email of the user's account used.
+              const email = error.email;
+              // The AuthCredential type that was used.
+              const credential = GoogleAuthProvider.credentialFromError(error);
+              // ...
+          });*/
+          signInWithPopup(auth, provider)
+          .then((result) => {
+              
+              // This gives you a Google Access Token. You can use it to access the Google API.
+              const credential = GoogleAuthProvider.credentialFromResult(result);
+              const token = credential.accessToken;
+              // The signed-in user info.
+              const user = result.user;
+              alert(user.displayName);
+              location.replace("map.html")
+              // ...
+          }).catch((error) => {
+              // Handle Errors here.
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              // The email of the user's account used.
+              const email = error.email;
+              // The AuthCredential type that was used.
+              const credential = GoogleAuthProvider.credentialFromError(error);
+              // ...
+          });
+      });
+
+      logout.addEventListener('click',(e) => {
+          signOut(auth).then(() => {
+              // Sign-out successful.
+            }).catch((error) => {
+              // An error happened.
+            });
+      });
+
+     /* document.getElementById('login').addEventListener('click', GoogleLogin)
+      let provider = new firebase.auth.GoogleAuthProvider()
+
+  function GoogleLogin(){
+      console.log('Login Btn Call')
+      firebase.auth().signInWithPopup(provider).then(res=>{
+      console.log(res)
+      }).catch(e=>{
+      console.log(e)
+      })
+  }*/
+
+    </script>
+    <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+</body>
+</html>
