@@ -1,0 +1,73 @@
+{
+    "Busses": {
+        "MH 12 SA 4623": {
+            "Route": [
+                "kamptee",
+                "asha hospital",
+                "orange city",
+                "delhi public school",
+                "Khari",
+                "naglok",
+                "bhilgaon",
+                "naka no 2",
+                "uppalwadi",
+                "pili nadi",
+                "automotive",
+                "teka naka",
+                "indora",
+                "kadbi chowk",
+                "gurudwara",
+                "gaddi godam",
+                "lic",
+                "reserve bank",
+                "burdi"
+            ]
+        },
+        "MH 40 DM 9968": {
+            "Route": [
+                "kamptee",
+                "asha hospital",
+                "orange city",
+                "delhi public school",
+                "Khari",
+                "naglok",
+                "bhilgaon",
+                "naka no 2",
+                "uppalwadi",
+                "pili nadi",
+                "automotive",
+                "teka naka",
+                "indora",
+                "kadbi chowk",
+                "gurudwara",
+                "gaddi godam",
+                "lic",
+                "reserve bank",
+                "burdi"
+            ]
+        },
+        "MH 12 SA 6668": {
+            "Route": [
+                "kamptee",
+                "asha hospital",
+                "orange city",
+                "delhi public school",
+                "Khari",
+                "naglok",
+                "bhilgaon",
+                "naka no 2",
+                "uppalwadi",
+                "pili nadi",
+                "automotive",
+                "teka naka",
+                "indora",
+                "kadbi chowk",
+                "gurudwara",
+                "gaddi godam",
+                "lic",
+                "reserve bank",
+                "burdi"
+            ]
+        }
+    }
+}

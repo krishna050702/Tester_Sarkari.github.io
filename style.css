@@ -117,3 +117,23 @@ button{
     color: #fff;
     font-size: 25px;
 }
+#myDialog{
+    z-index: 5;
+    position: absolute;
+    top: 15%;
+    left: 33%;
+    width: 25%;
+    height: 70%;
+    
+}
+#cross{
+    position: absolute;
+    left: 87%;
+    top: 5%;
+    font-size: 20px;
+    cursor: pointer;
+    border-color: 2px solid #fff;
+}
+#cross:hover{
+    transform: scale(1.2);
+}

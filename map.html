@@ -27,9 +27,10 @@ type="text/css"
 </head>
  
 <body>
+    <dialog id="myDialog">Profile<span id="username"></span><span class="iconify" id = "cross"onclick="exi()" data-icon="emojione-v1:cross-mark"></span></dialog>
 <div class="white" >
     <h4>SARKARI</h4>
-    <span class="iconify" data-icon="flat-color-icons:settings" style="color: #4ecb71;"></span>
+    <a href="#" onclick="pops()" ><span class="iconify"  data-icon="flat-color-icons:settings" style="color: #4ecb71;"></span></a>
     <div id="map"></div>
     <h3>Route Detail</h3>
     <div class="card" id="Cr">
@@ -45,7 +46,35 @@ type="text/css"
 </div>
 
  
-<script>
+<script >
+    var x = document.getElementById("myDialog"); 
+  
+
+
+    
+  var names = sessionStorage.getItem("names");
+  var photo = sessionStorage.getItem("photo");
+  console.log(photo);
+  document.getElementById("username").innerHTML = `<img src=${photo} style=\"position:absolute;left:32%;top:15%;border-radius:100%;width:35%\">`+"<h3 style=\"position:absolute;left:28%;top:43%;\">"+names+"</h3>"+"<button style=\"left:11%;background-color:#F15A25;cursor: pointer;\" onclick=\"change()\" >Log out</button>";
+  function pops(){
+    x.show();
+    
+  }
+
+
+  function exi(){
+    x.close();
+    
+  }
+
+
+
+  function change(){
+    location.replace("index1.html")
+  }
+
+
+      /* map acticity*/
 mapboxgl.accessToken = 'pk.eyJ1IjoibG9rZXNoLW1hbHZpeWEiLCJhIjoiY2t5ZzJhOXNhMW80bTJwbzh4aWZ5MWdzMSJ9.PglR7dfI3wqJnSG8Jy9D0w';
  
 const map = new mapboxgl.Map({
@@ -109,7 +138,7 @@ function myFunction()
             
           }
           document.getElementById("Cr").innerHTML = "<div style=\"background-color: #fff; border: 2px solid #090808; position:absolute; top: 15%;left: 3%; width : 98%; height : 15%; border-radius: 4px;  \"></div>"+"<span class=\"iconify\" data-icon=\"emojione:oncoming-bus\" style=\"font-size: 45px; color: #4ecb7; position:absolute;top: 18%;left: 5%;\"></span>"+"<h4 style=\"color: #000000; position:absolute;top: 17%;left: 26%;\">"+bus[0]+"<br/>"+"<span style=\"font-size: 15px;\">"+Loc+"-"+Det+"</span></h4>"+"<div style=\"background-color: #fff; border: 2px solid #090808; position:absolute; top: 31%;left: 3%; width : 98%; height : 15%; border-radius: 4px;  \"></div>"+"<span class=\"iconify\" data-icon=\"emojione:oncoming-bus\" style=\"font-size: 45px; color: #4ecb7; position:absolute;top: 33%;left: 5%;\"></span>"+"<h4 style=\"color: #000000; position:absolute;top: 32%;left: 26%;\">"+bus[1]+"<br/>"+"<span style=\"font-size: 15px;\">"+Loc+"-"+Det+"</span></h4>"+"<div style=\"background-color: #fff; border: 2px solid #090808; position:absolute; top: 47%;left: 3%; width : 98%; height : 15%; border-radius: 4px;  \"></div>"+"<span class=\"iconify\" data-icon=\"emojione:oncoming-bus\" style=\"font-size: 45px; color: #4ecb7; position:absolute;top: 49%;left: 5%;\"></span>"+"<h4 style=\"color: #000000; position:absolute;top: 48%;left: 26%;\">"+bus[2]+"<br/>"+"<span style=\"font-size: 15px;\">"+Loc+"-"+Det+"</span></h4>"+"<div style=\"background-color: #fff; border: 2px solid #090808; position:absolute; top: 64%;left: 3%; width : 98%; height : 15%; border-radius: 4px;  \"></div>"+"<span class=\"iconify\" data-icon=\"emojione:oncoming-bus\" style=\"font-size: 45px; color: #4ecb7; position:absolute;top: 66%;left: 5%;\"></span>"+"<h4 style=\"color: #000000; position:absolute;top: 65%;left: 26%;\">"+bus[2]+"<br/>"+"<span style=\"font-size: 15px;\">"+Loc+"-"+Det+"</span></h4>";
-                
+             
 }
 
 </script>
